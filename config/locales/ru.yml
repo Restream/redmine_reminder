@@ -1,0 +1,17 @@
+ru:
+  mail_reminder_all_day1: "день"
+  mail_reminder_all_day2: "дня"
+  mail_reminder_all_day5: "дней"
+  mail_subject_reminder_all1: "{{count}} тикет должен быть выполнен в течение следующего времени - {{days}} {{day}}"
+  mail_body_reminder_auth1: "{{count}} тикет, созданный вами, должен быть выполнен в течение следующего времени - {{days}} {{day}}:"
+  mail_body_reminder_assigned1: "{{count}} тикет, назначенный вам, должен быть выполнен в течение следующего времени - {{days}} {{day}}:"
+  mail_body_reminder_watched1: "{{count}} тикет, за которым вы наблюдаете, должен быть выполнен в течение следующего времени - {{days}} {{day}}:"
+  mail_subject_reminder_all2: "{{count}} тикета должны быть выполнены в течение следующего времени - {{days}} {{day}}"
+  mail_body_reminder_auth2: "{{count}} тикета, созданных вами, должны быть выполнены в течение следующего времени - {{days}} {{day}}:"
+  mail_body_reminder_assigned2: "{{count}} тикета, назначенных вам, должны быть выполнены в течение следующего времени - {{days}} {{day}}:"
+  mail_body_reminder_watched2: "{{count}} тикета, за которыми вы наблюдаете, должны быть выполнены в течение следующего времени - {{days}} {{day}}:"
+  mail_subject_reminder_all5: "{{count}} тикетов должны быть выполнены в течение следующего времени - {{days}} {{day}}"
+  mail_body_reminder_auth5: "{{count}} тикетов, созданных вами, должны быть выполнены в течение следующего времени - {{days}} {{day}}:"
+  mail_body_reminder_assigned5: "{{count}} тикетов, назначенных вам, должны быть выполнены в течение следующего времени - {{days}} {{day}}:"
+  mail_body_reminder_watched5: "{{count}} тикетов, за которыми вы наблюдаете, должны быть выполнены в течение следующего времени - {{days}} {{day}}:"
+
