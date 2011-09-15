@@ -108,8 +108,10 @@ class Reminder_all < Mailer
 	over_due<<[watcher.user, "watcher", issues]
       end
     end
-    over_due.sort!{|x,y| x[0].mail+x[1] <=> y[0].mail+y[1]}
-    previous_user = over_due[0][0]
+    if over_due.size >= 2
+      over_due.sort! { |x, y| x[0].mail + x[1] <=> y[0].mail + y[1] }
+    end
+    previous_user = over_due.empty? ? nil : over_due.first[0]
     watched_tasks = Array.new
     auth_tasks = Array.new
     assigned_tasks = Array.new
@@ -119,42 +121,44 @@ class Reminder_all < Mailer
         issues-=[issue]
       end
       if previous_user == user then
-	if type == "assignee" then
-	  assigned_tasks += issues
-	  sent_issues += issues
-	elsif type == "author" then
-	  auth_tasks += issues
-	  sent_issues += issues
-	elsif type == "watcher" then
-	  watched_tasks += issues
-	  sent_issues += issues
-	end	
+        case type
+        when "assignee"
+          assigned_tasks += issues
+          sent_issues += issues
+        when "author"
+          auth_tasks += issues
+          sent_issues += issues
+        when "watcher" then
+          watched_tasks += issues
+          sent_issues += issues
+        end
       else
-	if assigned_tasks.length > 0 then
-		assigned_tasks.sort! {|a,b| b.due_date <=> a.due_date }
-	end
-	if auth_tasks.length > 0 then
-		auth_tasks.sort! {|a,b| b.due_date <=> a.due_date }
-	end
-	if watched_tasks.length > 0 then
-		watched_tasks.sort! {|a,b| b.due_date <=> a.due_date }
-	end
-	deliver_reminder_all(previous_user, assigned_tasks, auth_tasks, watched_tasks, days) unless previous_user.nil?
-	watched_tasks.clear
-	auth_tasks.clear
-	assigned_tasks.clear
-	sent_issues.clear
-	previous_user=user
-	if type == "assignee" then
-	  assigned_tasks += issues
-	  sent_issues += issues
-	elsif type == "author" then
-	  auth_tasks += issues
-	  sent_issues += issues
-	elsif type == "watcher" then
-	  watched_tasks += issues
-	  sent_issues += issues
-	end
+        if assigned_tasks.length > 1
+          assigned_tasks.sort! { |a, b| b.due_date <=> a.due_date }
+        end
+        if auth_tasks.length > 1
+          auth_tasks.sort! { |a, b| b.due_date <=> a.due_date }
+        end
+        if watched_tasks.length > 1 then
+          watched_tasks.sort! { |a, b| b.due_date <=> a.due_date }
+        end
+        deliver_reminder_all(previous_user, assigned_tasks, auth_tasks, watched_tasks, days) unless previous_user.nil?
+        watched_tasks.clear
+        auth_tasks.clear
+        assigned_tasks.clear
+        sent_issues.clear
+        previous_user = user
+        case type
+        when "assignee"
+          assigned_tasks += issues
+          sent_issues += issues
+        when "author"
+          auth_tasks += issues
+          sent_issues += issues
+        when "watcher" then
+          watched_tasks += issues
+          sent_issues += issues
+        end
       end
     end
     deliver_reminder_all(previous_user, assigned_tasks, auth_tasks, watched_tasks, days) unless previous_user.nil?
