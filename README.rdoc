@@ -4,7 +4,7 @@ E-mail notification of issues due date you are involved in (Assignee, Author, Wa
 
 = Install
 
-script/plugin install git://github.com/alvila/redmine_reminder.git
+Follow the plugin installation procedure at http://www.redmine.org/wiki/redmine/Plugins.
 
 = Usage
 
