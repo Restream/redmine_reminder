@@ -27,7 +27,7 @@ class RedmineReminder::Collector
         end
       end
       reminders.values.map &:uniq!
-      reminders.values
+      reminders.values || []
     end
 
     private
