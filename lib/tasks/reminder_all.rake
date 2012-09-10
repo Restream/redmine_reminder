@@ -40,7 +40,6 @@ namespace :redmine do
 
     RedmineReminder::Collector.collect_reminders(options).each do |r|
       ReminderAllMailer.with_synched_deliveries do
-        puts r.inspect
         ReminderAllMailer.deliver_reminder_all(r.user,
            r[:assigned_to], r[:author], r[:watcher], options[:days])
       end
