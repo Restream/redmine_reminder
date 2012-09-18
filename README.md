@@ -14,4 +14,4 @@ The plugin runs as a rake task so you have to set it up in cron or task sheduler
 
 You can setup options in administration menu.
 
-![Reminder options in administration menu](https://github.com/Undev/redmine_reminder/feature/1.4-compatibility/screenshot.png)
+![Reminder options in administration menu](https://raw.github.com/Undev/redmine_reminder/feature/1.4-compatibility/screenshot.png)
