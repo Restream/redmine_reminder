@@ -20,6 +20,12 @@ toggleExplicitList(
 
 toggleExplicitList(
     'reminder_configuration_project_selector',
-    'explicit_project_statuses',
+    'explicit_projects',
+    'explicit'
+);
+
+toggleExplicitList(
+    'reminder_configuration_tracker_selector',
+    'explicit_trackers',
     'explicit'
 );

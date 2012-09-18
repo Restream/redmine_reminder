@@ -20,4 +20,15 @@ module ReminderConfigurationHelper
     options_from_collection_for_select Project.all, 'id', 'name',
                                        configuration.project_ids
   end
+
+  def tracker_selector_for_select
+    ReminderConfiguration::TRACKER_VARIANTS.map do |var|
+      [l(var, :scope => [:redmine_reminder, :trackers]), var]
+    end
+  end
+
+  def trackers_for_select(configuration)
+    options_from_collection_for_select Tracker.all, 'id', 'name',
+                                       configuration.tracker_ids
+  end
 end

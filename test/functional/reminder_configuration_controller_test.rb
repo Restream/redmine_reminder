@@ -24,6 +24,7 @@ class ReminderConfigurationControllerTest < ActionController::TestCase
       :days => 20,
       :issue_status_selector => 'explicit',
       :project_selector => 'explicit',
+      :tracker_selector => 'explicit',
       :send_to_author => false,
       :send_to_assigned_to => false,
       :send_to_watcher => false,

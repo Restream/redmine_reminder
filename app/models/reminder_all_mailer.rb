@@ -1,5 +1,5 @@
 class ReminderAllMailer < Mailer
-  def reminder_all(user, assigned_issues, auth_issues, watched_issues, days)
+  def reminder_all(user, assigned_issues, auth_issues, watched_issues, custom_user_issues, days)
     set_language_if_valid user.language
     recipients user.mail
     day_tag = [l(:mail_reminder_all_day1), l(:mail_reminder_all_day2),

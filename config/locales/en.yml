@@ -29,5 +29,8 @@ en:
     projects:
       all: "tasks from all projects"
       explicit: "tasks from selected projects"
+    trackers:
+      all: "tasks from all trackers"
+      explicit: "tasks from selected trackers"
 
   field_custom_user: "User from custom field"

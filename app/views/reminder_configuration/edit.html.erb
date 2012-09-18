@@ -21,8 +21,15 @@
 
   <h4><%= l(:label_project_plural) %></h4>
   <%= f.select :project_selector, project_selector_for_select %>
-  <span id="explicit_project_statuses">
+  <span id="explicit_projects">
     <%= f.select :project_ids, projects_for_select(@configuration),
+                 {}, { :multiple => true, :size  => 5 } %>
+  </span>
+
+  <h4><%= l(:label_tracker_plural) %></h4>
+  <%= f.select :tracker_selector, tracker_selector_for_select %>
+  <span id="explicit_trackers">
+    <%= f.select :tracker_ids, trackers_for_select(@configuration),
                  {}, { :multiple => true, :size  => 5 } %>
   </span>
 

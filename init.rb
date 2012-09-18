@@ -1,6 +1,13 @@
 require 'redmine'
+require 'dispatcher'
 
-require_dependency 'redmine_reminder/hooks'
+Dispatcher.to_prepare do
+  require_dependency 'tracker'
+  require_dependency 'redmine_reminder/hooks'
+  unless Tracker.included_modules.include? RedmineReminder::TrackerPatch
+    Tracker.send :include, RedmineReminder::TrackerPatch
+  end
+end
 
 Redmine::Plugin.register :redmine_reminder do
   name 'Advanced reminder'
