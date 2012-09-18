@@ -26,7 +26,9 @@ class RedmineReminder::CollectorTest < ActiveSupport::TestCase
     @issue_future.add_watcher @watcher
     @issue_future.add_watcher @author
 
-    @reminders = RedmineReminder::Collector.collect_reminders()
+    options = ReminderConfiguration.instance
+    collector = RedmineReminder::Collector.new(options)
+    @reminders = collector.collect_reminders
   end
 
   def test_reminders_collected

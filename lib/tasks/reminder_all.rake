@@ -22,26 +22,27 @@ require File.expand_path(File.dirname(__FILE__) + "/../../app/models/reminder_al
 desc <<-END_DESC
 Send reminders about issues due in the next days.
 
-Available options:
-  * days     => number of days to remind about (defaults to 7)
-  * tracker  => id of tracker (defaults to all trackers)
-  * project  => id or identifier of project (defaults to all projects)
+See 'Reminder options' in administration menu for available options.
 
 Example:
-  rake redmine:send_reminders_all days=7 RAILS_ENV="production"
+  rake redmine:send_reminders_all RAILS_ENV="production"
 END_DESC
 
 namespace :redmine do
   task :send_reminders_all => :environment do
-    options = {}
-    options[:days] = ENV['days'].present? ? ENV['days'].to_i : 7
-    options[:project] = ENV['project'] if ENV['project']
-    options[:tracker] = ENV['tracker'].to_i if ENV['tracker']
+    options = ReminderConfiguration.instance.options_hash
 
-    RedmineReminder::Collector.collect_reminders(options).each do |r|
+    collector = RedmineReminder::Collector(options)
+    collector.collect_reminders.each do |r|
       ReminderAllMailer.with_synched_deliveries do
-        ReminderAllMailer.deliver_reminder_all(r.user,
-           r[:assigned_to], r[:author], r[:watcher], options[:days])
+        ReminderAllMailer.deliver_reminder_all(
+            r.user,
+            r[:assigned_to],
+            r[:author],
+            r[:watcher],
+            r[:custom_user],
+            options[:days]
+        )
       end
     end
   end

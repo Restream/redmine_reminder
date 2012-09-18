@@ -5,7 +5,7 @@ class ReminderAllMailer < Mailer
     day_tag = [l(:mail_reminder_all_day1), l(:mail_reminder_all_day2),
                l(:mail_reminder_all_day2), l(:mail_reminder_all_day2),
                l(:mail_reminder_all_day5)]
-    issues_count = (assigned_issues + auth_issues + watched_issues).uniq.size
+    issues_count = (assigned_issues + auth_issues + watched_issues + custom_user_issues).uniq.size
     plural_subject_term = case issues_count
       when 1 then
         :mail_subject_reminder_all1
@@ -20,6 +20,7 @@ class ReminderAllMailer < Mailer
     body :assigned_issues => assigned_issues,
          :auth_issues => auth_issues,
          :watched_issues => watched_issues,
+         :custom_user_issues => custom_user_issues,
          :days => days,
          :issues_url => url_for(:controller => 'issues', :action => 'index',
                                 :set_filter => 1, :assigned_to_id => user.id,
