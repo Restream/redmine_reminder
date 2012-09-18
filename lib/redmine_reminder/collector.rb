@@ -70,7 +70,7 @@ class RedmineReminder::Collector
   def projects
     case options.project_selector
       when 'explicit'
-        ["#{Project.table_name}.id in (?)", options.projects_ids]
+        ["#{Project.table_name}.id in (?)", options.project_ids]
       when 'all'
         ["#{Project.table_name}.status = ?", Project::STATUS_ACTIVE]
       else
