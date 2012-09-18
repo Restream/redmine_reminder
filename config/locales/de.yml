@@ -14,3 +14,20 @@ de:
   mail_body_reminder_auth5: "{{count}} Tickets, die du erstellt hast, sind fällig im Zeitraum von {{days}} {{day}}:"
   mail_body_reminder_assigned5: "{{count}} Tickets, die dir zugewiesen wurden, sind fällig im Zeitraum von {{days}} {{day}}:"
   mail_body_reminder_watched5: "{{count}} Tickets, die du beobachtest, sind fällig im Zeitraum von {{days}} {{day}}:"
+
+  label_reminder_options: "Reminder options"
+  label_criteria_task: "Criteria task"
+  label_completion_date: "Completion date"
+  label_tasks_due_in: "tasks that must be completed in the next"
+  label_days: "days"
+  label_reminder_recipients: "Reminder recipients"
+
+  redmine_reminder:
+    issue_statuses:
+      all_opened: "all opened tasks"
+      explicit: "tasks with selected states"
+    projects:
+      all: "tasks from all projects"
+      explicit: "tasks from selected projects"
+
+  field_custom_user: "User from custom field"

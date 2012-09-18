@@ -1,4 +1,9 @@
 class RedmineReminder::Collector
+  attr_reader :options
+
+  def initialize(options)
+    @options = options
+  end
 
   class << self
     def collect_reminders(options = {})
@@ -50,6 +55,7 @@ class RedmineReminder::Collector
 
     def issue_statuses
       #TODO: modify issues.is_closed == false to issue set
+
       ["#{IssueStatus.table_name}.is_closed = ?", false]
     end
   end
