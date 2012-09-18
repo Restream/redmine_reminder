@@ -36,22 +36,6 @@ class ReminderConfiguration < ActiveRecord::Base
     set_default_values if new_record?
   end
 
-  def options_hash
-    {
-      :days => days,
-      :issue_status_selector => issue_status_selector,
-      :issue_status_ids => issue_status_ids,
-      :project_selector => project_selector,
-      :project_ids => project_ids,
-      :tracker_selector => tracker_selector,
-      :tracker_ids => tracker_ids,
-      :send_to_author => send_to_author,
-      :send_to_assigned_to => send_to_assigned_to,
-      :send_to_watcher => send_to_watcher,
-      :send_to_custom_user => send_to_custom_user
-    }
-  end
-
   private
 
   def set_default_values

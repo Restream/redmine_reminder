@@ -59,7 +59,7 @@ class RedmineReminder::Collector
   def issue_statuses
     case options.issue_status_selector
       when 'explicit'
-        ["#{IssueStatus.table_name}.id in ?", options.issue_status_ids]
+        ["#{IssueStatus.table_name}.id in (?)", options.issue_status_ids]
       when 'all_opened'
         ["#{IssueStatus.table_name}.is_closed = ?", false]
       else
@@ -70,7 +70,7 @@ class RedmineReminder::Collector
   def projects
     case options.project_selector
       when 'explicit'
-        ["#{Project.table_name}.id in ?", options.projects_ids]
+        ["#{Project.table_name}.id in (?)", options.projects_ids]
       when 'all'
         ["#{Project.table_name}.status = ?", Project::STATUS_ACTIVE]
       else
@@ -81,7 +81,7 @@ class RedmineReminder::Collector
   def trackers
     case options.tracker_selector
       when 'explicit'
-        ["#{Tracker.table_name}.id in ?", options.tracker_ids]
+        ["#{Tracker.table_name}.id in (?)", options.tracker_ids]
       when 'all'
         "1=1"
       else

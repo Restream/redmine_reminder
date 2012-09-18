@@ -30,9 +30,9 @@ END_DESC
 
 namespace :redmine do
   task :send_reminders_all => :environment do
-    options = ReminderConfiguration.instance.options_hash
+    options = ReminderConfiguration.instance
 
-    collector = RedmineReminder::Collector(options)
+    collector = RedmineReminder::Collector.new(options)
     collector.collect_reminders.each do |r|
       ReminderAllMailer.with_synched_deliveries do
         ReminderAllMailer.deliver_reminder_all(
@@ -41,7 +41,7 @@ namespace :redmine do
             r[:author],
             r[:watcher],
             r[:custom_user],
-            options[:days]
+            options.days
         )
       end
     end
