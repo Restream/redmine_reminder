@@ -1,0 +1,6 @@
+<% if issues.any? %>
+  <%= message %>
+  <% issues.each do |issue| -%>
+    * <%= issue.due_date %> - <%= "#{issue.project} - #{issue.tracker} ##{issue.id}: #{issue.subject}" %>
+  <% end -%>
+<% end %>

@@ -1,0 +1,8 @@
+<% if issues.any? %>
+  <p><%= message %></p>
+  <ul>
+    <% issues.each do |issue| -%>
+      <li><%= h issue.due_date %> - <%= h issue.project %> - <%= link_to("#{issue.tracker} ##{issue.id}", :controller => 'issues', :action => 'show', :id => issue, :only_path => false) %>: <%= h issue.subject %></li>
+    <% end -%>
+  </ul>
+<% end %>
