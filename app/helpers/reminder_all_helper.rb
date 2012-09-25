@@ -11,7 +11,7 @@ module ReminderAllHelper
   end
 
   %w(mail_body_reminder_assigned mail_body_reminder_auth mail_body_reminder_watched mail_body_reminder_custom_user).each do |term|
-    define_method "l_#{term}" do |count, days, day|
+    define_method "l_#{term}" do |count, days|
       countable_term = case count
         when 1
           "#{term}1"

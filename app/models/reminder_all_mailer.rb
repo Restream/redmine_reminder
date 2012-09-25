@@ -1,4 +1,7 @@
 class ReminderAllMailer < Mailer
+
+  helper :reminder_all
+
   def reminder_all(user, assigned_issues, auth_issues, watched_issues, custom_user_issues, days)
     set_language_if_valid user.language
     recipients user.mail
@@ -25,6 +28,8 @@ class ReminderAllMailer < Mailer
          :issues_url => url_for(:controller => 'issues', :action => 'index',
                                 :set_filter => 1, :assigned_to_id => user.id,
                                 :sort_key => 'due_date', :sort_order => 'asc')
+
+
     render_multipart('reminder_all', body) if issues_count > 0
   end
 end
