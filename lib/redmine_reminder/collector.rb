@@ -12,30 +12,30 @@ class RedmineReminder::Collector
     issues.each do |issue|
 
       if options.send_to_author?
-        reminder = (reminders[issue.author] ||=
-            RedmineReminder::Reminder.new(issue.author))
-        reminder[:author] << issue
+        reminders[issue.author] ||=
+            RedmineReminder::Reminder.new(issue.author)
+        reminders[issue.author][:author] << issue
       end
 
       if options.send_to_assigned_to? && issue.assigned_to
-        reminder = (reminders[issue.assigned_to] ||=
-            RedmineReminder::Reminder.new(issue.assigned_to))
-        reminder[:assigned_to] << issue
+        reminders[issue.assigned_to] ||=
+            RedmineReminder::Reminder.new(issue.assigned_to)
+        reminders[issue.assigned_to][:assigned_to] << issue
       end
 
       if options.send_to_watcher?
         issue.watchers.each do |watcher|
-          reminder = (reminders[watcher.user] ||=
-              RedmineReminder::Reminder.new(watcher.user))
-          reminder[:watcher] << issue
+          reminders[watcher.user] ||=
+              RedmineReminder::Reminder.new(watcher.user)
+          reminders[watcher.user][:watcher] << issue
         end
       end
 
       if options.send_to_custom_user?
         issue_custom_users(issue).each do |custom_user|
-          reminder = (reminders[custom_user] ||=
-              RedmineReminder::Reminder.new(custom_user))
-          reminder[:custom_user] << issue
+          reminders[custom_user] ||=
+              RedmineReminder::Reminder.new(custom_user)
+          reminders[custom_user][:custom_user] << issue
         end
       end
     end
@@ -53,7 +53,8 @@ class RedmineReminder::Collector
     s << projects
     s << trackers
     Issue.find(:all, :include => [:status, :assigned_to, :author, :project, :watchers, :tracker],
-               :conditions => s.conditions)
+               :conditions => s.conditions,
+               :order => "#{Issue.table_name}.due_date, #{Project.table_name}.name")
   end
 
   def issue_statuses

@@ -16,6 +16,8 @@ class RedmineReminder::Reminder
   end
 
   def uniq!
-    @issues.values.map &:uniq!
+    @issues.keys.each do |key|
+      @issues[key].uniq!
+    end
   end
 end

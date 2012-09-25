@@ -7,9 +7,4 @@ class ReminderConfigurationsTest < ActiveSupport::TestCase
     conf = ReminderConfiguration.instance
     assert conf
   end
-
-  def test_get_options_hash
-    hash = ReminderConfiguration.instance.options_hash
-    assert hash
-  end
 end

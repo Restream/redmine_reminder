@@ -13,9 +13,9 @@
 <% end
    if @auth_issues.length > 0
      case @auth_issues.length
-       when 1 then -%> <%= l(:mail_body_reminder_auth1, :count => @auth_issues.size, :days => @days, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
-  <% when 2..4 then -%> <%= l(:mail_body_reminder_auth2, :count => @auth_issues.size, :days => @days, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
-  <% else -%> <%= l(:mail_body_reminder_auth5, :count => @auth_issues.size, :days => @days, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
+       when 1 then -%> <%= l(:mail_body_reminder_auth1, :count => @auth_issues.size, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
+  <% when 2..4 then -%> <%= l(:mail_body_reminder_auth2, :count => @auth_issues.size, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
+  <% else -%> <%= l(:mail_body_reminder_auth5, :count => @auth_issues.size, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
   <% end -%>
 
   <% @auth_issues.each do |issue| -%>
@@ -24,9 +24,9 @@
 <% end
    if @watched_issues.length > 0
      case @watched_issues.length
-       when 1 then -%> <%= l(:mail_body_reminder_watched1, :count => @watched_issues.size, :days => @days, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
-  <% when 2..4 then -%> <%= l(:mail_body_reminder_watched2, :count => @watched_issues.size, :days => @days, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
-  <% else -%> <%= l(:mail_body_reminder_watched5, :count => @watched_issues.size, :days => @days, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
+       when 1 then -%> <%= l(:mail_body_reminder_watched1, :count => @watched_issues.size, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
+  <% when 2..4 then -%> <%= l(:mail_body_reminder_watched2, :count => @watched_issues.size, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
+  <% else -%> <%= l(:mail_body_reminder_watched5, :count => @watched_issues.size, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
   <% end -%>
 
 
@@ -36,9 +36,9 @@
 <% end
    if @custom_user_issues.length > 0
      case @custom_user_issues.length
-       when 1 then -%> <%= l(:mail_body_reminder_custom_user1, :count => @custom_user_issues.size, :days => @days, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
-  <% when 2..4 then -%> <%= l(:mail_body_reminder_custom_user2, :count => @custom_user_issues.size, :days => @days, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
-  <% else -%> <%= l(:mail_body_reminder_custom_user5, :count => @custom_user_issues.size, :days => @days, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
+       when 1 then -%> <%= l(:mail_body_reminder_custom_user1, :count => @custom_user_issues.size, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
+  <% when 2..4 then -%> <%= l(:mail_body_reminder_custom_user2, :count => @custom_user_issues.size, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
+  <% else -%> <%= l(:mail_body_reminder_custom_user5, :count => @custom_user_issues.size, :days => @days, :day=>day_tag[@days>4 ? 5 : @days-1]) %>
   <% end -%>
 
 
