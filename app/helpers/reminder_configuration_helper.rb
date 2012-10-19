@@ -6,8 +6,8 @@ module ReminderConfigurationHelper
   end
 
   def issue_statuses_for_select(configuration)
-    options_from_collection_for_select IssueStatus.all, 'id', 'name',
-                                       configuration.issue_status_ids
+    options_from_collection_for_select IssueStatus.all(:order => 'position'),
+                                       'id', 'name', configuration.issue_status_ids
   end
 
   def project_selector_for_select
@@ -17,8 +17,8 @@ module ReminderConfigurationHelper
   end
 
   def projects_for_select(configuration)
-    options_from_collection_for_select Project.all, 'id', 'name',
-                                       configuration.project_ids
+    options_from_collection_for_select Project.all(:order => 'lft'),
+                                       'id', 'name', configuration.project_ids
   end
 
   def tracker_selector_for_select
