@@ -34,6 +34,7 @@ namespace :redmine do
 
     collector = RedmineReminder::Collector.new(options)
     collector.collect_reminders.each do |r|
+      next unless r.user.active?
       ReminderAllMailer.with_synched_deliveries do
         ReminderAllMailer.deliver_reminder_all(
             r.user,
