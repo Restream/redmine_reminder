@@ -4,7 +4,19 @@ E-mail notification of issues due date you are involved in (Assignee, Author, Wa
 
 ## Install
 
-Follow the plugin installation procedure at http://www.redmine.org/wiki/redmine/Plugins.
+1. Copy plugin directory into #{RAILS_ROOT}/plugins.
+If you are downloading the plugin directly from GitHub,
+you can do so by changing into your plugin directory and issuing a command like
+
+        git clone https://github.com/Undev/redmine_reminder
+
+2. Run the following command to upgrade your database (make a db backup before).
+
+        bundle exec rake redmine:plugins:migrate RAILS_ENV=production
+
+3. Restart Redmine
+
+You can also follow plugin installation procedure at http://www.redmine.org/wiki/redmine/Plugins.
 
 ## Usage
 
@@ -14,4 +26,8 @@ The plugin runs as a rake task so you have to set it up in cron or task sheduler
 
 You can setup options in administration menu.
 
-![Reminder options in administration menu](https://raw.github.com/Undev/redmine_reminder/feature/1.4-compatibility/screenshot.png)
+![Reminder options in administration menu](https://raw.github.com/Undev/redmine_reminder/master/screenshot.png)
+
+## Compatibility
+
+This version supports only redmine 2.x. See [feature/1.4-compatibility](https://github.com/Undev/redmine_reminder/tree/feature/1.4-compatibility) branch for Redmine 1.4.

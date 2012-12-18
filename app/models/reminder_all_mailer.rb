@@ -1,10 +1,8 @@
 class ReminderAllMailer < Mailer
-
   helper :reminder_all
 
   def reminder_all(user, assigned_issues, auth_issues, watched_issues, custom_user_issues, days)
-    set_language_if_valid user.language
-    recipients user.mail
+    recipients = user.mail
     day_tag = [l(:mail_reminder_all_day1), l(:mail_reminder_all_day2),
                l(:mail_reminder_all_day2), l(:mail_reminder_all_day2),
                l(:mail_reminder_all_day5)]
@@ -18,18 +16,23 @@ class ReminderAllMailer < Mailer
         :mail_subject_reminder_all5
     end
     l_day_dag = day_tag[(days > 4 ? 4 : days - 1)]
-    subject l(plural_subject_term, :count => issues_count, :days => days,
+    subject = l(plural_subject_term, :count => issues_count, :days => days,
               :day => l_day_dag)
-    body :assigned_issues => assigned_issues,
-         :auth_issues => auth_issues,
-         :watched_issues => watched_issues,
-         :custom_user_issues => custom_user_issues,
-         :days => days,
-         :issues_url => url_for(:controller => 'issues', :action => 'index',
-                                :set_filter => 1, :assigned_to_id => user.id,
-                                :sort_key => 'due_date', :sort_order => 'asc')
+    @assigned_issues = assigned_issues
+    @auth_issues = auth_issues
+    @watched_issues = watched_issues
+    @custom_user_issues = custom_user_issues
+    @days = days
+    @issues_url = url_for(:controller => 'issues', :action => 'index',
+                          :set_filter => 1, :assigned_to_id => user.id,
+                          :sort_key => 'due_date', :sort_order => 'asc')
 
+    mail :to => recipients, :subject => subject
+  end
 
-    render_multipart('reminder_all', body) if issues_count > 0
+  def self.deliver_reminder_all_if_any(user, assigned_issues, auth_issues, watched_issues, custom_user_issues, days)
+    issues_count = (assigned_issues + auth_issues + watched_issues + custom_user_issues).uniq.size
+    reminder_all(user, assigned_issues, auth_issues, watched_issues,
+        custom_user_issues, days).deliver if issues_count > 0
   end
 end

@@ -19,15 +19,6 @@ class RedmineReminder::ReminderTest < ActiveSupport::TestCase
     assert_equal [:stub3], @reminder[:watcher]
   end
 
-  def test_reminder_allow_add_issues
-    @reminder[:author] << :stub1
-    @reminder[:assigned_to] << :stub2
-    @reminder[:watcher] << :stub3
-    assert_equal [:stub1], @reminder[:author]
-    assert_equal [:stub2], @reminder[:assigned_to]
-    assert_equal [:stub3], @reminder[:watcher]
-  end
-
   def test_reminder_keys
     @reminder[:author] << :stub1
     @reminder[:assigned_to] << :stub2

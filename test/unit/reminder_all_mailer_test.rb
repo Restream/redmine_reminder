@@ -9,7 +9,6 @@ class ReminderAllMailerTest < ActiveSupport::TestCase
            :enumerations
 
   def setup
-    ActionMailer::Base.delivery_method = :test
     ActionMailer::Base.deliveries.clear
     Setting.host_name = 'mydomain.foo'
     Setting.protocol = 'http'
@@ -48,14 +47,14 @@ class ReminderAllMailerTest < ActiveSupport::TestCase
 
   def test_html_reminder_all
     Setting.plain_text_mail = '0'
-    assert ReminderAllMailer.deliver_reminder_all(
-               @reminder.user,
-               @reminder[:assigned_to],
-               @reminder[:author],
-               @reminder[:watcher],
-               @reminder[:custom_user],
-               @options.days
-           )
+    ReminderAllMailer.deliver_reminder_all_if_any(
+      @reminder.user,
+      @reminder[:assigned_to],
+      @reminder[:author],
+      @reminder[:watcher],
+      @reminder[:custom_user],
+      @options.days
+    )
 
     assert_equal 1, ActionMailer::Base.deliveries.size
     mail = last_email
@@ -65,14 +64,14 @@ class ReminderAllMailerTest < ActiveSupport::TestCase
 
   def test_text_reminder_all
     Setting.plain_text_mail = 1
-    assert ReminderAllMailer.deliver_reminder_all(
-               @reminder.user,
-               @reminder[:assigned_to],
-               @reminder[:author],
-               @reminder[:watcher],
-               @reminder[:custom_user],
-               @options.days
-           )
+    ReminderAllMailer.deliver_reminder_all_if_any(
+      @reminder.user,
+      @reminder[:assigned_to],
+      @reminder[:author],
+      @reminder[:watcher],
+      @reminder[:custom_user],
+      @options.days
+    )
 
     assert_equal 1, ActionMailer::Base.deliveries.size
     mail = last_email
