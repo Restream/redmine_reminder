@@ -3,10 +3,10 @@ class CreateReminderProjects < ActiveRecord::Migration
     create_table :reminder_projects do |t|
       t.column :reminder_configuration_id, :integer
       t.column :project_id, :integer
-    end
+    end unless table_exists? :reminder_projects
   end
 
   def self.down
-    drop_table :reminder_projects
+    drop_table :reminder_projects if table_exists? :reminder_projects
   end
 end

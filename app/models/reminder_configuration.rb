@@ -9,13 +9,19 @@ class ReminderConfiguration < ActiveRecord::Base
   PROJECT_VARIANTS = [ALL, EXPLICIT]
   TRACKER_VARIANTS = [ALL, EXPLICIT]
 
-  validates_presence_of :days
-  validates_inclusion_of :issue_status_selector, :in => ISSUE_STATUS_VARIANTS
-  validates_presence_of :issue_status_selector
-  validates_inclusion_of :project_selector, :in => PROJECT_VARIANTS
-  validates_presence_of :project_selector
-  validates_inclusion_of :tracker_selector, :in => TRACKER_VARIANTS
-  validates_presence_of :tracker_selector
+  validates :days, :presence => true
+
+  validates :issue_status_selector,
+            :presence => true,
+            :inclusion => { :in => ISSUE_STATUS_VARIANTS }
+
+  validates :project_selector,
+            :presence => true,
+            :inclusion => { :in => PROJECT_VARIANTS }
+
+  validates :tracker_selector,
+            :presence => true,
+            :inclusion => { :in => TRACKER_VARIANTS }
 
   has_many :reminder_issue_statuses
   has_many :issue_statuses, :through => :reminder_issue_statuses
@@ -32,7 +38,7 @@ class ReminderConfiguration < ActiveRecord::Base
     end
   end
 
-  def after_initialize
+  after_initialize do
     set_default_values if new_record?
   end
 

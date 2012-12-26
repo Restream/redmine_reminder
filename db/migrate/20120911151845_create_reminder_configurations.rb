@@ -10,10 +10,10 @@ class CreateReminderConfigurations < ActiveRecord::Migration
       t.column :send_to_custom_user, :boolean
 
       t.timestamps
-    end
+    end unless table_exists? :reminder_configurations
   end
 
   def self.down
-    drop_table :reminder_configurations
+    drop_table :reminder_configurations if table_exists? :reminder_configurations
   end
 end

@@ -1,6 +1,10 @@
-# Load the normal Rails helper
-require File.expand_path('../../../../test/test_helper', File.dirname(__FILE__))
+require File.expand_path(File.dirname(__FILE__) + '/../../../test/test_helper')
 
-# Ensure that we are using the temporary fixture path
-# Engines::Testing.set_fixture_path
+ActiveSupport::TestCase.append_fixture_path File.expand_path('../fixtures', __FILE__)
+
+class ActiveSupport::TestCase
+  def mail_body(mail)
+    mail.multipart? ? mail.parts.first.body.encoded : mail.body.encoded
+  end
+end
 

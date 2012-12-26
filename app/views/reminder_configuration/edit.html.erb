@@ -2,7 +2,7 @@
 
 <h3><%= l(:label_criteria_task) %></h3>
 
-<% form_for @configuration, :action => 'update', :method => "put",
+<%= form_for @configuration, :action => 'update', :method => "put",
             :url => reminder_configuration_path do |f| %>
 
   <%= error_messages_for(@configuration) %>

@@ -1,7 +1,6 @@
 require 'redmine'
-require 'dispatcher'
 
-Dispatcher.to_prepare do
+Rails.configuration.to_prepare do
   require_dependency 'tracker'
   require_dependency 'redmine_reminder/hooks'
   unless Tracker.included_modules.include? RedmineReminder::TrackerPatch
@@ -11,9 +10,9 @@ end
 
 Redmine::Plugin.register :redmine_reminder do
   name 'Advanced reminder'
-  author 'Milan Stastny of ALVILA SYSTEMS'
+  author 'Milan Stastny of ALVILA SYSTEMS & Undev'
   description 'E-mail notification of issues due date you are involved in (Assignee, Author, Watcher)'
-  version '0.1.1'
+  version '0.1.0'
   url 'https://github.com/Undev/redmine_reminder'
   author_url 'http://www.alvila.com'
 

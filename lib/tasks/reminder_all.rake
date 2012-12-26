@@ -15,10 +15,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-require File.expand_path(File.dirname(__FILE__) + "/../../../../../config/environment")
-require "mailer"
-require File.expand_path(File.dirname(__FILE__) + "/../../app/models/reminder_all_mailer")
-
 desc <<-END_DESC
 Send reminders about issues due in the next days.
 
@@ -36,7 +32,7 @@ namespace :redmine do
     collector.collect_reminders.each do |r|
       next unless r.user.active?
       ReminderAllMailer.with_synched_deliveries do
-        ReminderAllMailer.deliver_reminder_all(
+        ReminderAllMailer.deliver_reminder_all_if_any(
             r.user,
             r[:assigned_to],
             r[:author],

@@ -2,4 +2,4 @@
 one:
   id: 1
   days: 1
-  issue_status_selector: all_closed
+  issue_status_selector: all_opened
