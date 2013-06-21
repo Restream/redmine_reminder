@@ -22,12 +22,12 @@ class ReminderAllMailerTest < ActiveSupport::TestCase
         :author => @author,
         :assigned_to => @assigned_to
     }
-    @issue_soon = Issue.generate_for_project! @project,
-                                              options.merge(:due_date => 2.days.since)
+    @issue_soon = generate_issue!(@project,
+        options.merge(:due_date => 2.days.since))
     @issue_soon.add_watcher @watcher
     @issue_soon.add_watcher @author
-    @issue_future = Issue.generate_for_project! @project,
-                                                options.merge(:due_date => 8.days.since)
+    @issue_future = generate_issue!(@project,
+        options.merge(:due_date => 8.days.since))
     @issue_future.add_watcher @watcher
     @issue_future.add_watcher @author
 
