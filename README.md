@@ -1,5 +1,8 @@
 # Advanced Redmine Notifications
 
+[![Build Status](https://travis-ci.org/nodecarter/redmine_reminder.png)](https://travis-ci.org/nodecarter/redmine_reminder)
+[![Code Climate](https://codeclimate.com/github/Undev/redmine_reminder.png)](https://codeclimate.com/github/Undev/redmine_reminder)
+
 E-mail notification of issues due date you are involved in (Assignee, Author, Watcher, Custom field)
 
 ## Install
