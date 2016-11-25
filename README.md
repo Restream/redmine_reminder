@@ -1,7 +1,7 @@
 # Advanced Redmine Notifications
 
-[![Build Status](https://travis-ci.org/Restream/redmine_reminder.png)](https://travis-ci.org/Restream/redmine_reminder)
-[![Code Climate](https://codeclimate.com/github/Restream/redmine_reminder.png)](https://codeclimate.com/github/Restream/redmine_reminder)
+[![Build Status](https://travis-ci.org/Restream/redmine_reminder.svg?branch=master)](https://travis-ci.org/Restream/redmine_reminder)
+[![Code Climate](https://codeclimate.com/github/Restream/redmine_reminder/badges/gpa.svg)](https://codeclimate.com/github/Restream/redmine_reminder)
 
 E-mail notification of issues due date you are involved in (Assignee, Author, Watcher, Custom field)
 
