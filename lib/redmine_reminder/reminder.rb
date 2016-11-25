@@ -2,7 +2,7 @@ class RedmineReminder::Reminder
   attr_reader :user, :issues
 
   def initialize(user)
-    @user = user
+    @user   = user
     @issues = {}
   end
 

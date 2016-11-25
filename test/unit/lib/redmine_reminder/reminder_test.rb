@@ -3,10 +3,10 @@ require File.expand_path('../../../../test_helper', __FILE__)
 class RedmineReminder::ReminderTest < ActiveSupport::TestCase
 
   def setup
-    @user = :user_stub
-    @issue1 = :stub1
-    @issue2 = :stub1
-    @issue3 = :stub3
+    @user     = :user_stub
+    @issue1   = :stub1
+    @issue2   = :stub1
+    @issue3   = :stub3
     @reminder = RedmineReminder::Reminder.new(@user)
   end
 

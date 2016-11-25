@@ -1,11 +1,11 @@
 module ReminderAllHelper
   def l_days(days_count)
     day_tag = [
-        t(:mail_reminder_all_day1),
-        t(:mail_reminder_all_day2),
-        t(:mail_reminder_all_day2),
-        t(:mail_reminder_all_day2),
-        t(:mail_reminder_all_day5)
+      t(:mail_reminder_all_day1),
+      t(:mail_reminder_all_day2),
+      t(:mail_reminder_all_day2),
+      t(:mail_reminder_all_day2),
+      t(:mail_reminder_all_day5)
     ]
     day_tag[days_count > 4 ? 4 : days_count - 1]
   end
@@ -20,7 +20,7 @@ module ReminderAllHelper
         else
           "#{term}5"
       end
-      t(countable_term, :count => count, :days => days, :day => l_days(days))
+      t(countable_term, count: count, days: days, day: l_days(days))
     end
   end
 end

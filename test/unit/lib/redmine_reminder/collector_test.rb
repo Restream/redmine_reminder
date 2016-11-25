@@ -2,32 +2,32 @@ require File.expand_path('../../../../test_helper', __FILE__)
 
 class RedmineReminder::CollectorTest < ActiveSupport::TestCase
 
-  fixtures :projects, :users, :members, :member_roles, :roles,
-           :groups_users,
-           :trackers, :projects_trackers,
-           :issue_statuses, :issue_categories, :workflows,
-           :enumerations
+  fixtures :projects, :users, :email_addresses, :members, :member_roles, :roles,
+    :groups_users,
+    :trackers, :projects_trackers,
+    :issue_statuses, :issue_categories, :workflows,
+    :enumerations
 
   def setup
-    @project = Project.find(1)
-    @author = User.find(2)
+    @project     = Project.find(1)
+    @author      = User.find(2)
     @assigned_to = User.find(3)
-    @watcher = User.find(4)
-    options = {
-        :author => @author,
-        :assigned_to => @assigned_to
+    @watcher     = User.find(4)
+    options      = {
+      author:      @author,
+      assigned_to: @assigned_to
     }
-    @issue_soon = generate_issue! @project,
-        options.merge(:due_date => 2.days.since)
+    @issue_soon  = generate_issue! @project,
+      options.merge(due_date: 2.days.since)
     @issue_soon.add_watcher @watcher
     @issue_soon.add_watcher @author
     @issue_future = generate_issue! @project,
-        options.merge(:due_date => 8.days.since)
+      options.merge(due_date: 8.days.since)
     @issue_future.add_watcher @watcher
     @issue_future.add_watcher @author
 
-    options = ReminderConfiguration.instance
-    collector = RedmineReminder::Collector.new(options)
+    options    = ReminderConfiguration.instance
+    collector  = RedmineReminder::Collector.new(options)
     @reminders = collector.collect_reminders
   end
 

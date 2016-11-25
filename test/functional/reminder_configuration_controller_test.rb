@@ -4,7 +4,7 @@ class ReminderConfigurationControllerTest < ActionController::TestCase
   fixtures :projects, :users, :issue_statuses
 
   def setup
-    @request    = ActionController::TestRequest.new
+    @request                   = ActionController::TestRequest.new
     @request.session[:user_id] = 1 # admin
   end
 
@@ -21,14 +21,14 @@ class ReminderConfigurationControllerTest < ActionController::TestCase
 
   def test_update_configuration
     attrs = {
-      :days => 20,
-      :issue_status_selector => 'explicit',
-      :project_selector => 'explicit',
-      :tracker_selector => 'explicit',
-      :send_to_author => false,
-      :send_to_assigned_to => false,
-      :send_to_watcher => false,
-      :send_to_custom_user => false
+      days:                  20,
+      issue_status_selector: 'explicit',
+      project_selector:      'explicit',
+      tracker_selector:      'explicit',
+      send_to_author:        false,
+      send_to_assigned_to:   false,
+      send_to_watcher:       false,
+      send_to_custom_user:   false
     }
     put :update, reminder_configuration: attrs
     assert_response :redirect

@@ -2,35 +2,37 @@
 
 <h3><%= l(:label_criteria_task) %></h3>
 
-<%= form_for @configuration, :action => 'update', :method => "put",
-            :url => reminder_configuration_path do |f| %>
+<%= form_for @configuration,
+    action: 'update',
+    method: 'put',
+    url:    reminder_configuration_path do |f| %>
 
   <%= error_messages_for(@configuration) %>
 
   <h4><%= l(:label_completion_date) %></h4>
   <%= l(:label_tasks_due_in) %>
-  <%= f.text_field :days, :size => 3 %>
+  <%= f.text_field :days, size: 3 %>
   <%= l(:label_days) %>
 
   <h4><%= l(:label_issue_status_plural) %></h4>
   <%= f.select :issue_status_selector, issue_status_selector_for_select %>
   <span id="explicit_issue_statuses">
     <%= f.select :issue_status_ids, issue_statuses_for_select(@configuration),
-                 {}, { :multiple => true, :size  => 5 } %>
+        {}, { multiple: true, size: 5 } %>
   </span>
 
   <h4><%= l(:label_project_plural) %></h4>
   <%= f.select :project_selector, project_selector_for_select %>
   <span id="explicit_projects">
     <%= f.select :project_ids, projects_for_select(@configuration),
-                 {}, { :multiple => true, :size  => 5 } %>
+        {}, { multiple: true, size: 5 } %>
   </span>
 
   <h4><%= l(:label_tracker_plural) %></h4>
   <%= f.select :tracker_selector, tracker_selector_for_select %>
   <span id="explicit_trackers">
     <%= f.select :tracker_ids, trackers_for_select(@configuration),
-                 {}, { :multiple => true, :size  => 5 } %>
+        {}, { multiple: true, size: 5 } %>
   </span>
 
   <h4><%= l(:label_reminder_recipients) %></h4>
@@ -56,4 +58,4 @@
 
 <% end %>
 
-<%= javascript_include_tag 'reminder_configuration.js', :plugin => 'redmine_reminder' %>
+<%= javascript_include_tag 'reminder_configuration.js', plugin: 'redmine_reminder' %>

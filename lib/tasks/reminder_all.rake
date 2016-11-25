@@ -25,7 +25,7 @@ Example:
 END_DESC
 
 namespace :redmine do
-  task :send_reminders_all => :environment do
+  task send_reminders_all: :environment do
     options = ReminderConfiguration.instance
 
     collector = RedmineReminder::Collector.new(options)

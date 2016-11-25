@@ -1,7 +1,7 @@
 # Advanced Redmine Notifications
 
-[![Build Status](https://travis-ci.org/Undev/redmine_reminder.png)](https://travis-ci.org/Undev/redmine_reminder)
-[![Code Climate](https://codeclimate.com/github/Undev/redmine_reminder.png)](https://codeclimate.com/github/Undev/redmine_reminder)
+[![Build Status](https://travis-ci.org/Restream/redmine_reminder.png)](https://travis-ci.org/Restream/redmine_reminder)
+[![Code Climate](https://codeclimate.com/github/Restream/redmine_reminder.png)](https://codeclimate.com/github/Restream/redmine_reminder)
 
 E-mail notification of issues due date you are involved in (Assignee, Author, Watcher, Custom field)
 
@@ -11,7 +11,7 @@ E-mail notification of issues due date you are involved in (Assignee, Author, Wa
 If you are downloading the plugin directly from GitHub,
 you can do so by changing into your plugin directory and issuing a command like
 
-        git clone https://github.com/Undev/redmine_reminder
+        git clone https://github.com/Restream/redmine_reminder
 
 2. Run the following command to upgrade your database (make a db backup before).
 
@@ -29,8 +29,8 @@ The plugin runs as a rake task so you have to set it up in cron or task sheduler
 
 You can setup options in administration menu.
 
-![Reminder options in administration menu](https://raw.github.com/Undev/redmine_reminder/master/screenshot.png)
+![Reminder options in administration menu](doc/screenshot.png)
 
 ## Compatibility
 
-This version supports only redmine 2.x. See [feature/1.4-compatibility](https://github.com/Undev/redmine_reminder/tree/feature/1.4-compatibility) branch for Redmine 1.4.
+This version supports redmine 3.x.

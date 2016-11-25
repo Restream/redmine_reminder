@@ -1,17 +1,17 @@
-<%= render :partial => "issues", :locals => {
-    :issues => @assigned_issues,
-    :message => l_mail_body_reminder_assigned(@assigned_issues.size, @days) } %>
+<%= render partial: 'issues', locals: {
+    issues:  @assigned_issues,
+    message: l_mail_body_reminder_assigned(@assigned_issues.size, @days) } %>
 
-<%= render :partial => "issues", :locals => {
-    :issues => @auth_issues,
-    :message => l_mail_body_reminder_auth(@auth_issues.size, @days) } %>
+<%= render partial: 'issues', locals: {
+    issues:  @auth_issues,
+    message: l_mail_body_reminder_auth(@auth_issues.size, @days) } %>
 
-<%= render :partial => "issues", :locals => {
-    :issues => @watched_issues,
-    :message => l_mail_body_reminder_watched(@watched_issues.size, @days) } %>
+<%= render partial: 'issues', locals: {
+    issues:  @watched_issues,
+    message: l_mail_body_reminder_watched(@watched_issues.size, @days) } %>
 
-<%= render :partial => "issues", :locals => {
-    :issues => @custom_user_issues,
-    :message => l_mail_body_reminder_custom_user(@custom_user_issues.size, @days) } %>
+<%= render partial: 'issues', locals: {
+    issues:  @custom_user_issues,
+    message: l_mail_body_reminder_custom_user(@custom_user_issues.size, @days) } %>
 
 <%= @issues_url %>
