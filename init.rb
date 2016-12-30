@@ -4,7 +4,7 @@ Redmine::Plugin.register :redmine_reminder do
   name 'Advanced reminder'
   author 'Milan Stastny of ALVILA SYSTEMS & Restream'
   description 'E-mail notification of issues due date you are involved in (Assignee, Author, Watcher)'
-  version '0.2.1'
+  version '0.2.2'
   url 'https://github.com/Restream/redmine_reminder'
   author_url 'http://www.alvila.com'
 
