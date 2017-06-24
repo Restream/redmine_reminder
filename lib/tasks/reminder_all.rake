@@ -38,6 +38,7 @@ namespace :redmine do
             r[:author],
             r[:watcher],
             r[:custom_user],
+            r[:without_due_day],
             options.days
         )
       end

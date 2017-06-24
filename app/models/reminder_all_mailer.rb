@@ -1,7 +1,7 @@
 class ReminderAllMailer < Mailer
   helper :reminder_all
 
-  def reminder_all(user, assigned_issues, auth_issues, watched_issues, custom_user_issues, days)
+  def reminder_all(user, assigned_issues, auth_issues, watched_issues, custom_user_issues, without_due_day, days)
     recipients          = user.mail
     day_tag             = [l(:mail_reminder_all_day1), l(:mail_reminder_all_day2),
       l(:mail_reminder_all_day2), l(:mail_reminder_all_day2),
@@ -25,6 +25,7 @@ class ReminderAllMailer < Mailer
     @auth_issues        = auth_issues
     @watched_issues     = watched_issues
     @custom_user_issues = custom_user_issues
+    @without_due_day    = without_due_day
     @days               = days
     @issues_url         = url_for(
       controller: 'issues',
@@ -35,9 +36,9 @@ class ReminderAllMailer < Mailer
     mail to: recipients, subject: subject
   end
 
-  def self.deliver_reminder_all_if_any(user, assigned_issues, auth_issues, watched_issues, custom_user_issues, days)
-    issues_count = (assigned_issues + auth_issues + watched_issues + custom_user_issues).uniq.size
+  def self.deliver_reminder_all_if_any(user, assigned_issues, auth_issues, watched_issues, custom_user_issues, without_due_day, days)
+    issues_count = (assigned_issues + auth_issues + watched_issues + custom_user_issues + without_due_day).uniq.size
     reminder_all(user, assigned_issues, auth_issues, watched_issues,
-      custom_user_issues, days).deliver if issues_count > 0
+      custom_user_issues, without_due_day, days).deliver if issues_count > 0
   end
 end

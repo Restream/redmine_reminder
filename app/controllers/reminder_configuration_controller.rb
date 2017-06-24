@@ -23,7 +23,7 @@ class ReminderConfigurationController < ApplicationController
   def permitted_conf_params
     params.required(:reminder_configuration).permit(
       :days, :issue_status_selector, :project_selector, :tracker_selector, :send_to_author,
-      :send_to_assigned_to, :send_to_watcher, :send_to_custom_user,
+      :send_to_assigned_to, :use_due_day, :send_to_watcher, :send_to_custom_user,
       { issue_status_ids: [] },
       { project_ids: [] },
       { tracker_ids: [] }
