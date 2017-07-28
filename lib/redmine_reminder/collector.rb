@@ -5,6 +5,10 @@ class RedmineReminder::Collector
     @options = options
   end
 
+  def logger
+	Rails.logger
+  end
+  
   def collect_reminders
     reminders = {}
 
@@ -14,8 +18,8 @@ class RedmineReminder::Collector
                issues_due_in_days(false)
              end
 
+	# logger.info issues.count()
     issues.each do |issue|
-
       if options.send_to_author?
         reminders[issue.author] ||=
             RedmineReminder::Reminder.new(issue.author)
@@ -26,6 +30,10 @@ class RedmineReminder::Collector
         reminders[issue.assigned_to] ||=
             RedmineReminder::Reminder.new(issue.assigned_to)
         reminders[issue.assigned_to][:assigned_to] << issue
+		#logger.info "v=#{issue}"
+		#logger.info "v.author=#{issue.author}"
+		#logger.info "v.assigned_to=#{issue.assigned_to}"
+		#logger.info "v.due_date=#{issue.due_date}"
       end
 
       if options.send_to_watcher?
@@ -44,13 +52,24 @@ class RedmineReminder::Collector
         end
       end
 
-      reminders[issue.assigned_to] ||= RedmineReminder::Reminder.new(issue.assigned_to)
-      unless options.use_due_day?
-        reminders[issue.assigned_to][:without_due_day] << issue unless issue.due_date
+	  if !options.use_due_day? && issue.assigned_to && !issue.due_date
+		#logger.info "v=#{issue}"
+		#logger.info "v.author=#{issue.author}"
+		#logger.info "v.assigned_to=#{issue.assigned_to}"
+		#logger.info "v.due_date=#{issue.due_date}"
+        reminders[issue.assigned_to] ||=
+            RedmineReminder::Reminder.new(issue.assigned_to)
+        reminders[issue.assigned_to][:without_due_day] << issue
       end
     end
     reminders.values.map &:uniq!
     reminders.values || []
+	
+	#reminders.values.each do |v|
+	#	logger.info "v=#{v}"
+	#	logger.info "v.user=#{v.user}"
+	#end
+	
   end
 
   private
