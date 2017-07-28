@@ -26,7 +26,7 @@ class RedmineReminder::Collector
         reminders[issue.author][:author] << issue
       end
 
-      if options.send_to_assigned_to? && issue.assigned_to
+      if options.send_to_assigned_to? && issue.assigned_to && issue.due_date
         reminders[issue.assigned_to] ||=
             RedmineReminder::Reminder.new(issue.assigned_to)
         reminders[issue.assigned_to][:assigned_to] << issue
@@ -92,7 +92,7 @@ class RedmineReminder::Collector
     end
 
     scope.where(sql_condition.conditions).
-        order("#{Issue.table_name}.due_date, #{Project.table_name}.name")
+        order("#{Project.table_name}.name, #{Issue.table_name}.due_date")
   end
 
   def issue_statuses
