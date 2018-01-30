@@ -11,7 +11,7 @@ Redmine::Plugin.register :redmine_reminder do
   menu :admin_menu,
     :reminder_options,
     { controller: 'reminder_configuration', action: 'edit' },
-    html: { class: 'reminder_options_label' }
+    html: { class: 'icon reminder_options_label' }
 end
 
 require_dependency 'redmine_reminder/hooks'
