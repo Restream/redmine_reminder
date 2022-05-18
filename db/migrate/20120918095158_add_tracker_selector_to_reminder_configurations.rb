@@ -1,4 +1,4 @@
-class AddTrackerSelectorToReminderConfigurations < ActiveRecord::Migration
+class AddTrackerSelectorToReminderConfigurations < ActiveRecord::Migration[5.1]
   def self.up
     unless column_exists? :reminder_configurations, :tracker_selector
       add_column :reminder_configurations, :tracker_selector, :string
