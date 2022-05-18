@@ -33,4 +33,4 @@ You can setup options in administration menu.
 
 ## Compatibility
 
-This version supports redmine 3.x.
+This version supports redmine 4.x.
