@@ -14,4 +14,8 @@
     issues:  @custom_user_issues,
     message: l_mail_body_reminder_custom_user(@custom_user_issues.size, @days) } %>
 
+<%= render partial: 'issues', locals: {
+    issues:  @without_due_day,
+    message: l(:mail_body_reminder_assigned_set, @without_due_day.size) } %>
+
 <%= @issues_url %>

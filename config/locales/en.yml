@@ -17,6 +17,7 @@ en:
   mail_body_reminder_assigned5: "%{count} issues that are assigned to you are due in the next %{days} %{day}:"
   mail_body_reminder_watched5: "%{count} issues that are watched by you are due in the next %{days} %{day}:"
   mail_body_reminder_custom_user5: "%{count} issues in which you are mentioned are due in the next %{days} %{day}:"
+  mail_body_reminder_assigned_set: "%{count} issues that are assigned to you which don't have end date set:"
 
   label_reminder_options: "Reminder options"
   label_criteria_task: "Criteria task"
@@ -37,3 +38,4 @@ en:
       explicit: "tasks from selected trackers"
 
   field_custom_user: "User from custom field"
+  field_use_due_day: "Send tasks which have end date only"

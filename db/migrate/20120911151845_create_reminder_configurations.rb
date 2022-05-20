@@ -1,4 +1,4 @@
-class CreateReminderConfigurations < ActiveRecord::Migration
+class CreateReminderConfigurations < ActiveRecord::Migration[5.1]
   def self.up
     create_table :reminder_configurations do |t|
       t.column :days, :integer

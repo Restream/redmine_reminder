@@ -1,4 +1,4 @@
-class CreateReminderTrackers < ActiveRecord::Migration
+class CreateReminderTrackers < ActiveRecord::Migration[5.1]
   def self.up
     create_table :reminder_trackers do |t|
       t.column :reminder_configuration_id, :integer

@@ -1,0 +1,39 @@
+pl:
+  mail_reminder_all_day1: "dnia"
+  mail_reminder_all_day2: "dni"
+  mail_reminder_all_day5: "dni"
+  mail_subject_reminder_all1: "%{count} zadań do wykonania w ciągu następnych %{days} %{day}"
+  mail_body_reminder_auth1: "%{count} zadań do wykonania w ciągu %{days} %{day}, których jesteś autorem:"
+  mail_body_reminder_assigned1: "%{count} zadań do wykonania w ciągu %{days} %{day}, do których jesteś przypisany:"
+  mail_body_reminder_watched1: "%{count} zadań do wykonania w ciągu %{days} %{day}, których jesteś obserwatorem:"
+  mail_body_reminder_custom_user1: "%{count} zadań do wykonania w ciągu %{days} %{day}, w których o Tobie wspomniano:"
+  mail_subject_reminder_all2: "%{count} zadań do wykonania w ciągu następnych %{days} %{day}"
+  mail_body_reminder_auth2: "%{count} zadań do wykonania w ciągu następnych %{days} %{day}, których jesteś autorem:"
+  mail_body_reminder_assigned2: "%{count} zadań do wykonania w ciągu następnych %{days} %{day}, do których jesteś przypisany:"
+  mail_body_reminder_watched2: "%{count} zadań do wykonania w ciągu następnych %{days} %{day}, których jesteś obserwatorem:"
+  mail_body_reminder_custom_user2: "%{count} issues in which you are mentioned are due in the next %{days} %{day}:"
+  mail_subject_reminder_all5: "%{count} zadań do wykonania w ciągu następnych %{days} %{day}"
+  mail_body_reminder_auth5: "%{count} zadań do wykonania w ciągu następnych %{days} %{day}, których jesteś autorem:"
+  mail_body_reminder_assigned5: "%{count} issues that are assigned to you are due in the next %{days} %{day}:"
+  mail_body_reminder_watched5: "%{count} zadań do wykonania w ciągu następnych %{days} %{day}, których jesteś obserwatorem:"
+  mail_body_reminder_custom_user5: "%{count} zadań do wykonania w ciągu następnych %{days} %{day}, w których o Tobie wspomniano:"
+
+  label_reminder_options: "Przypominacz - ustawienia"
+  label_criteria_task: "Kryteria zadania"
+  label_completion_date: "Data ukończenia"
+  label_tasks_due_in: "Zadania, które muszą być ukończonew ciągu następnych"
+  label_days: "Dni"
+  label_reminder_recipients: "Odbiorcy przypominacza"
+
+  redmine_reminder:
+    issue_statuses:
+      all_opened: "Wszystkie otwarte zadania"
+      explicit: "Zadania z wybranym statusem"
+    projects:
+      all: "Zadania ze wszystkich projektów"
+      explicit: "Zadania z wybranych projektów"
+    trackers:
+      all: "Zadania każdego typu"
+      explicit: "Wybrane typy zadań"
+
+  field_custom_user: "Użytkownik z pola niestandardowego"

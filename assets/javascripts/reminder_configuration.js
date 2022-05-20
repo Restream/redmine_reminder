@@ -1,13 +1,13 @@
 var toggleExplicitList = function(selector, list, explicit_value) {
   var fnToggleList = function() {
-    if ($(selector).getValue() == explicit_value) {
+    if ($(selector).val() == explicit_value) {
       $(list).show();
     } else {
       $(list).hide();
     }
   };
 
-  $(selector).observe('change', fnToggleList);
+  $(selector).on('change', fnToggleList);
 
   fnToggleList();
 };

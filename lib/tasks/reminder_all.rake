@@ -30,16 +30,26 @@ namespace :redmine do
 
     collector = RedmineReminder::Collector.new(options)
     collector.collect_reminders.each do |r|
-      next unless r.user.active?
+      users = if r.user.is_a?(User)
+                [r.user]
+              else
+                r.user.users
+              end
+      users = users.compact.select{|u| u.active?}
+      next unless users.blank?
       ReminderAllMailer.with_synched_deliveries do
-        ReminderAllMailer.deliver_reminder_all_if_any(
-            r.user,
-            r[:assigned_to],
-            r[:author],
-            r[:watcher],
-            r[:custom_user],
-            options.days
-        )
+          users.each do |user|
+            ReminderAllMailer.deliver_reminder_all_if_any(
+              user,
+              r[:assigned_to],
+              r[:author],
+              r[:watcher],
+              r[:custom_user],
+              r[:without_due_day],
+              options.days
+            )
+          end
+
       end
     end
   end
