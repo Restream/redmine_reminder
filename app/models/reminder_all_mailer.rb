@@ -39,6 +39,6 @@ class ReminderAllMailer < Mailer
   def self.deliver_reminder_all_if_any(user, assigned_issues, auth_issues, watched_issues, custom_user_issues, without_due_day, days)
     issues_count = (assigned_issues + auth_issues + watched_issues + custom_user_issues + without_due_day).uniq.size
     reminder_all(user, assigned_issues, auth_issues, watched_issues,
-      custom_user_issues, without_due_day, days).deliver if issues_count > 0
+      custom_user_issues, without_due_day, days).deliver_later if issues_count > 0
   end
 end
